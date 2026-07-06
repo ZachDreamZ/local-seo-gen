@@ -23,11 +23,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!page) return { title: 'Page Not Found' }
 
   const city = page.cities as any
-  const title = `${page.templates?.name || 'Our Services'} in ${city?.city_name}, ${city?.state_name}`
+  const template = page.templates as any
+  const title = `${template?.name || 'Our Services'} in ${city?.city_name}, ${city?.state_name}`
   
   return {
     title,
-    description: `Professional ${page.templates?.name || 'services'} in ${city?.city_name}, ${city?.state_name}. Contact us today!`,
+    description: `Professional ${template?.name || 'services'} in ${city?.city_name}, ${city?.state_name}. Contact us today!`,
   }
 }
 
