@@ -37,7 +37,9 @@ export default async function PagesPage() {
         {pages?.map((page) => (
           <div key={page.id} className="p-4 border rounded-lg flex justify-between items-center hover:bg-gray-50 transition">
             <div>
-              <h3 className="font-medium text-lg">{page.cities?.city_name} - {page.templates?.name}</h3>
+              <h3 className="font-medium text-lg">
+                {(page.cities as any)?.city_name} - {(page.templates as any)?.name}
+              </h3>
               <p className="text-sm text-gray-500 font-mono">/p/{page.slug}</p>
             </div>
             <div className="flex gap-2">
