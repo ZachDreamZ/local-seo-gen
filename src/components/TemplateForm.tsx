@@ -49,7 +49,7 @@ export default function TemplateForm({ template = null }: { template?: any }) {
 
       <div>
         <label className="block text-sm font-medium mb-1">
-          Content (Use {'{{city}}', '{{state}}', '{{service}}' placeholders)
+          Content (Use {"{{city}}", "{{state}}", "{{service}}" placeholders)
         </label>
         <textarea
           value={content}
