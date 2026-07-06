@@ -22,9 +22,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!page) return { title: 'Page Not Found' }
 
-  const city = page.cities as any
-  const template = page.templates as any
-  const title = `${template?.name || 'Our Services'} in ${city?.city_name}, ${city?.state_name}`
+  const city = Array.isArray(page.cities) ? page.cities[0] : page.cities
+  const template = Array.isArray(page.templates) ? page.templates[0] : page.templates
+  const title = `${template?.name || 'Our Services'} in ${city?.city_name || 'Unknown'}, ${city?.state_name || 'Unknown'}`
   
   return {
     title,
@@ -51,8 +51,8 @@ export default async function PublicPage({ params }: PageProps) {
     notFound()
   }
 
-  const template = page.templates as any
-  const city = page.cities as any
+  const template = (Array.isArray(page.templates) ? page.templates[0] : page.templates) as any
+  const city = (Array.isArray(page.cities) ? page.cities[0] : page.cities) as any
 
   const variables: Record<string, string> = {
     city: city.city_name,
