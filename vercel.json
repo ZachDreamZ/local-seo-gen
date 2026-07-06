@@ -1,0 +1,16 @@
+{
+  "framework": "nextjs",
+  "regions": ["sfo1"],
+  "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/p/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, s-maxage=3600, stale-while-revalidate=86400"
+        }
+      ]
+    }
+  ]
+}
