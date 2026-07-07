@@ -1,7 +1,9 @@
-import { createClient } from '@/utils/supabase/server'
+import { createAdminClient } from '@/utils/supabase/admin'
+
+export const dynamic = 'force-dynamic'
 
 export default async function PagesPage() {
-  const supabase = await createClient()
+  const supabase = createAdminClient()
 
   const { data: pages, error } = await supabase
     .from('generated_pages')

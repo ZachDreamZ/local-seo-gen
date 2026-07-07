@@ -1,8 +1,10 @@
-import { createClient } from '@/utils/supabase/server'
+import { createAdminClient } from '@/utils/supabase/admin'
 import { redirect } from 'next/navigation'
 
+export const dynamic = 'force-dynamic'
+
 export default async function TemplatesPage() {
-  const supabase = await createClient()
+  const supabase = createAdminClient()
 
   const { data: templates, error } = await supabase
     .from('templates')
