@@ -1,5 +1,7 @@
 import CityListForm from '@/components/CityListForm'
 
+export const dynamic = 'force-dynamic'
+
 export default async function NewCityListPage() {
   return (
     <div className="p-8 max-w-2xl mx-auto">

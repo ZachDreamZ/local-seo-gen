@@ -1,5 +1,7 @@
 import TemplateForm from '@/components/TemplateForm'
 
+export const dynamic = 'force-dynamic'
+
 export default async function NewTemplatePage() {
   return (
     <div className="p-8 max-w-2xl mx-auto">

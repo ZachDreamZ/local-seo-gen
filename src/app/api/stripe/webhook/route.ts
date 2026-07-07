@@ -1,11 +1,6 @@
 import { stripe } from '@/utils/stripe'
-import { createClient } from '@supabase/supabase-js'
+import { createAdminClient } from '@/utils/supabase/admin'
 import { NextResponse } from 'next/server'
-
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-)
 
 export async function POST(req: Request) {
   const body = await req.text()
@@ -29,7 +24,7 @@ export async function POST(req: Request) {
       const userId = session.metadata.userId
 
       // Update user subscription status in DB (we'll add a subscriptions table)
-      await supabaseAdmin
+      await createAdminClient()
         .from('profiles')
         .update({ is_subscribed: true })
         .eq('id', userId)
